@@ -16,14 +16,13 @@ small,.note{color:#666}
 <a class="btn" href="https://github.com/knybbe/godot-splat-viewer-site/releases/download/nightly/GodotSplatViewer-windows-x86_64.zip">Windows (x64)</a>
 <a class="btn" href="https://github.com/knybbe/godot-splat-viewer-site/releases/download/nightly/GodotSplatViewer-macos-universal.zip">macOS (universal)</a>
 <a class="btn" href="https://github.com/knybbe/godot-splat-viewer-site/releases/download/nightly/GodotSplatViewer-ios-unsigned.ipa">iOS (unsigned .ipa)</a>
-<a class="btn" href="https://github.com/knybbe/godot-splat-viewer-site/releases/download/nightly/GodotSplatViewer-ios-simulator.zip">iOS Simulator</a>
 </p>
 <h3>Install notes</h3>
 <ul class="note">
 <li><b>Android:</b> allow installs from unknown sources. The APK has a debug signature.</li>
 <li><b>Windows:</b> unsigned, so SmartScreen warns you. Choose "More info → Run anyway".</li>
 <li><b>macOS:</b> unsigned and not notarized. Right-click the app → Open, or run <code>xattr -dr com.apple.quarantine "Godot Splat Viewer.app"</code>.</li>
-<li><b>iOS:</b> unsigned. Sideload it with a free Apple ID through AltStore or Sideloadly (it has to be re-signed every 7 days), or build from the Xcode project. The simulator build runs in the Xcode iOS Simulator.</li>
+<li><b>iOS:</b> unsigned. Sideload it with a free Apple ID through AltStore or Sideloadly (it has to be re-signed every 7 days), or build from the Xcode project.</li>
 </ul>
 <p><small>All releases: <a href="https://github.com/knybbe/godot-splat-viewer-site/releases">GitHub Releases</a> · Build: <span id="b"></span></small></p>
 <script>fetch('build.txt').then(r=>r.text()).then(t=>b.textContent=t).catch(()=>{})</script>
