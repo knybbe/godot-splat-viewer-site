@@ -1,0 +1,23 @@
+name: release
+on:
+  push:
+    branches: [staging]
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: staging }
+      - name: Publish release
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          TAG=$(sed -n 1p RELEASE_INFO); SHA=$(sed -n 2p RELEASE_INFO)
+          gh release delete "$TAG" -y --cleanup-tag 2>/dev/null || true
+          git push -q origin ":refs/tags/$TAG" 2>/dev/null || true
+          FLAGS=""; [ "$TAG" = nightly ] && FLAGS="--prerelease"
+          gh release create "$TAG" --target main --title "Godot Splat Viewer $TAG" \
+            --notes "Built from knybbe/godot-splat-viewer@$SHA. Unsigned builds; see the install notes at https://knybbe.github.io/godot-splat-viewer-site/" \
+            $FLAGS GodotSplatViewer-*
+          git push -q origin --delete staging
