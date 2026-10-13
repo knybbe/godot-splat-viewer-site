@@ -1,1 +1,1 @@
-9d5e046 2026-10-13T12:23:00Z (local pack; wasm from 73be1db)
+fc9b1a2 2026-10-13T15:33:43Z (local build: wasm + pack)
