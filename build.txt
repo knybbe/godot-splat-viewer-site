@@ -1,1 +1,1 @@
-ecbd51c 2026-10-13T08:38:35Z (local web pack; wasm from 4c606bd CI, no C++ changes)
+985d0ad 2026-10-13T08:42:52Z (local web pack; old navigation)
