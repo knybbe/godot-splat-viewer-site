@@ -1,1 +1,1 @@
-fc9b1a2 2026-10-13T15:33:43Z (local build: wasm + pack)
+5e7d174 toolbar compact 2026-10-31T00:03Z
