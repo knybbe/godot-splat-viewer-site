@@ -68,9 +68,21 @@ a{color:var(--accent)}
 </main>
 <script>
 const modes=["system","light","dark"],names=["System","Light","Dark"],icons=["contrast","sun","moon"];
-let m=Math.max(0,modes.indexOf(localStorage.getItem("gsv-theme")||"system"));
+function readTheme(){
+ let v=localStorage.getItem("nsl-theme");
+ if(modes.indexOf(v)<0){
+  const old=localStorage.getItem("gsv-theme");
+  if(modes.indexOf(old)>=0){localStorage.setItem("nsl-theme",old);localStorage.removeItem("gsv-theme");v=old}
+  else v="system";
+ }
+ return modes.indexOf(v);
+}
+let m=readTheme();
 function apply(){document.documentElement.dataset.theme=modes[m];themeIco.style.setProperty("--i",`url(icons/${icons[m]}.svg)`);themeLbl.textContent=names[m]}
-theme.onclick=()=>{m=(m+1)%3;localStorage.setItem("gsv-theme",modes[m]);apply()};apply();
+function writeTheme(){localStorage.setItem("nsl-theme",modes[m]);localStorage.removeItem("gsv-theme")}
+theme.onclick=()=>{m=(m+1)%3;writeTheme();apply()};
+addEventListener("storage",e=>{if(e.key==="nsl-theme"){const i=modes.indexOf(e.newValue);if(i>=0){m=i;apply()}}});
+apply();
 fetch("build.txt").then(r=>r.text()).then(t=>b.textContent=t).catch(()=>{});
 </script>
 </body></html>
